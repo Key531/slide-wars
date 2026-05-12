@@ -1,0 +1,524 @@
+[
+  {
+    "id": "A-001",
+    "category": "reporting",
+    "categoryKr": "보고 문화",
+    "title": "\"한 장으로 줄여봐\"",
+    "week": null,
+    "npcId": "EXE-03",
+    "npcName": "최 실장",
+    "npcOrg": "전략기획실",
+    "urgency": "high",
+    "description": "3주간 준비한 전략 보고서 30장을 제출했다.\n\n최 실장: \"내용은 좋은데, CEO는 긴 거 싫어해. 핵심만 뽑아서 한 장으로 다시 만들어봐. 내일 오전까지.\"",
+    "choices": [
+      { "index": 0, "text": "밤새워 1장으로 압축한다", "hint": "KPI↑  스트레스↑↑", "effects": [{ "metric": "kpiProgress", "delta": 10 }, { "metric": "stress", "delta": 18 }], "hiddenEffects": [], "chainEvent": null },
+      { "index": 1, "text": "핵심 5장으로 타협을 제안한다", "hint": "신뢰↓  KPI~", "effects": [{ "metric": "executiveTrust", "delta": -5 }, { "metric": "kpiProgress", "delta": 5 }], "hiddenEffects": [], "chainEvent": null },
+      { "index": 2, "text": "\"1장은 내용 왜곡\" 우려 이의 제기", "hint": "신뢰↓↓  영향력↑", "effects": [{ "metric": "executiveTrust", "delta": -15 }, { "metric": "politicalCapital", "delta": 8 }], "hiddenEffects": [], "chainEvent": null }
+    ],
+    "tags": ["reporting", "executive", "pressure"]
+  },
+  {
+    "id": "A-002",
+    "category": "reporting",
+    "categoryKr": "보고 문화",
+    "title": "\"숫자가 좀 달라\"",
+    "week": null,
+    "npcId": "EXE-03",
+    "npcName": "최 실장",
+    "npcOrg": "전략기획실",
+    "urgency": "critical",
+    "description": "경영진 보고 전날, 상사가 KPI 수치를 '좀 더 좋아 보이게' 정리해달라고 한다.\n\n실제 달성률은 67%인데, 측정 기준을 바꾸면 82%가 된다.",
+    "choices": [
+      { "index": 0, "text": "측정 기준 변경해 82%로 보고", "hint": "신뢰↑  (숨겨진 리스크 있음)", "effects": [{ "metric": "executiveTrust", "delta": 15 }, { "metric": "kpiProgress", "delta": 8 }], "hiddenEffects": [{ "metric": "politicalCapital", "delta": -15, "delay": 3, "description": "데이터 조작이 나중에 알려졌다..." }], "chainEvent": null },
+      { "index": 1, "text": "67% 그대로, 개선 계획 강조", "hint": "KPI~  영향력↑", "effects": [{ "metric": "kpiProgress", "delta": -5 }, { "metric": "executiveTrust", "delta": -5 }, { "metric": "politicalCapital", "delta": 10 }], "hiddenEffects": [], "chainEvent": null },
+      { "index": 2, "text": "법적 리스크 언급하며 거부", "hint": "신뢰↓↓  영향력↑↑", "effects": [{ "metric": "executiveTrust", "delta": -20 }, { "metric": "politicalCapital", "delta": 15 }], "hiddenEffects": [], "chainEvent": null }
+    ],
+    "tags": ["reporting", "ethics", "kpi"]
+  },
+  {
+    "id": "A-003",
+    "category": "reporting",
+    "categoryKr": "보고 문화",
+    "title": "임원 코멘트 27개",
+    "week": null,
+    "npcId": "EXE-03",
+    "npcName": "최 실장",
+    "npcOrg": "전략기획실",
+    "urgency": "medium",
+    "description": "제출한 보고서에 임원 코멘트 27개가 달렸다.\n\n일부는 서로 상충된다. '더 구체적으로'라는 코멘트와 '너무 자세하다'는 코멘트가 같은 슬라이드에 있다.",
+    "choices": [
+      { "index": 0, "text": "모든 코멘트 반영 시도", "hint": "스트레스↑↑  KPI↑", "effects": [{ "metric": "stress", "delta": 25 }, { "metric": "kpiProgress", "delta": 5 }], "hiddenEffects": [], "chainEvent": null },
+      { "index": 1, "text": "핵심 코멘트만 선별 반영", "hint": "KPI↑  신뢰↓", "effects": [{ "metric": "kpiProgress", "delta": 10 }, { "metric": "executiveTrust", "delta": -10 }], "hiddenEffects": [], "chainEvent": null },
+      { "index": 2, "text": "임원에게 우선순위 직접 확인 요청", "hint": "신뢰↑  스트레스↓", "effects": [{ "metric": "executiveTrust", "delta": 10 }, { "metric": "stress", "delta": -5 }, { "metric": "kpiProgress", "delta": -5 }], "hiddenEffects": [], "chainEvent": null }
+    ],
+    "tags": ["reporting", "executive", "feedback"]
+  },
+  {
+    "id": "A-004",
+    "category": "reporting",
+    "categoryKr": "보고 문화",
+    "title": "\"보고 전에 보고\"",
+    "week": null,
+    "npcId": "EXE-03",
+    "npcName": "최 실장",
+    "npcOrg": "전략기획실",
+    "urgency": "medium",
+    "description": "다음 주 임원 보고가 있다.\n\n상사: \"임원 보고 전에 내가 먼저 검토할게. 팀장님 보고도 있고. 먼저 나한테 pre-보고해.\"\n\n총 3번의 보고가 생겼다.",
+    "choices": [
+      { "index": 0, "text": "3단계 보고 충실히 준비", "hint": "KPI↑  스트레스↑↑  사기↓", "effects": [{ "metric": "kpiProgress", "delta": 5 }, { "metric": "stress", "delta": 20 }, { "metric": "teamMorale", "delta": -10 }], "hiddenEffects": [], "chainEvent": null },
+      { "index": 1, "text": "보고 2번으로 합치자고 제안", "hint": "신뢰↓  스트레스↓", "effects": [{ "metric": "executiveTrust", "delta": -10 }, { "metric": "stress", "delta": 5 }], "hiddenEffects": [], "chainEvent": null }
+    ],
+    "tags": ["reporting", "meetings", "process"]
+  },
+  {
+    "id": "A-005",
+    "category": "reporting",
+    "categoryKr": "보고 문화",
+    "title": "\"이 숫자 출처가 어디야\"",
+    "week": null,
+    "npcId": "EXE-01",
+    "npcName": "이 전무",
+    "npcOrg": "사업본부 A",
+    "urgency": "high",
+    "description": "임원 보고 중, 보고서의 시장 규모 데이터에 대해 이 전무가 묻는다.\n\n\"이 숫자 출처가 어디야? 우리가 직접 조사한 거야 아니면 구글링한 거야?\"\n\n실제로 무료 리포트에서 가져온 것이다.",
+    "choices": [
+      { "index": 0, "text": "공개 리포트 출처 솔직히 밝힘", "hint": "신뢰↓  영향력↑", "effects": [{ "metric": "executiveTrust", "delta": -10 }, { "metric": "politicalCapital", "delta": 5 }], "hiddenEffects": [], "chainEvent": null },
+      { "index": 1, "text": "\"내부 분석과 교차 검증한 수치\"로 포장", "hint": "KPI↑  (리스크 숨김)", "effects": [{ "metric": "kpiProgress", "delta": 10 }, { "metric": "executiveTrust", "delta": 5 }], "hiddenEffects": [{ "metric": "politicalCapital", "delta": -20, "delay": 2, "description": "포장이 들통났다..." }], "chainEvent": null },
+      { "index": 2, "text": "즉석에서 심층 조사 시작 약속", "hint": "스트레스↑  KPI~", "effects": [{ "metric": "stress", "delta": 15 }, { "metric": "kpiProgress", "delta": -5 }], "hiddenEffects": [], "chainEvent": null }
+    ],
+    "tags": ["reporting", "data", "executive"]
+  },
+  {
+    "id": "B-001",
+    "category": "meeting",
+    "categoryKr": "회의 문화",
+    "title": "오늘 회의가 5개",
+    "week": null,
+    "npcId": "TL-01",
+    "npcName": "김 팀장",
+    "npcOrg": "상품기획팀",
+    "urgency": "medium",
+    "description": "오늘 오전 회의가 5개다.\n\n첫 회의가 30분 늦게 시작되어 연쇄 지연이 발생했다.\n오후 3시 중요 보고 준비 시간이 없어졌다.",
+    "choices": [
+      { "index": 0, "text": "회의 다 참석, 보고는 밤에", "hint": "스트레스↑↑  KPI↑", "effects": [{ "metric": "stress", "delta": 20 }, { "metric": "kpiProgress", "delta": 5 }], "hiddenEffects": [], "chainEvent": null },
+      { "index": 1, "text": "비핵심 회의 불참, 팀원 대리", "hint": "사기↓  KPI↑", "effects": [{ "metric": "teamMorale", "delta": -10 }, { "metric": "kpiProgress", "delta": 10 }], "hiddenEffects": [], "chainEvent": null },
+      { "index": 2, "text": "회의 구조 재설계 제안", "hint": "영향력↑  KPI↓", "effects": [{ "metric": "politicalCapital", "delta": 5 }, { "metric": "kpiProgress", "delta": -5 }], "hiddenEffects": [], "chainEvent": null }
+    ],
+    "tags": ["meeting", "time", "priority"]
+  },
+  {
+    "id": "B-002",
+    "category": "meeting",
+    "categoryKr": "회의 문화",
+    "title": "결론 없는 2시간 회의",
+    "week": null,
+    "npcId": "EXE-01",
+    "npcName": "이 전무",
+    "npcOrg": "사업본부 A",
+    "urgency": "medium",
+    "description": "신제품 전략 회의 2시간.\n결론이 나지 않았다.\n\n이 전무: \"오늘은 여기까지. 다음 주에 다시 논의하죠.\"\n\n팀원들 표정이 굳어있다.",
+    "choices": [
+      { "index": 0, "text": "회의 후 요약 메일 + 다음 아젠다 정리", "hint": "KPI↑  스트레스↑", "effects": [{ "metric": "kpiProgress", "delta": 5 }, { "metric": "stress", "delta": 10 }], "hiddenEffects": [], "chainEvent": null },
+      { "index": 1, "text": "\"오늘 결론이 필요한 항목만 빠르게 결정합시다\"", "hint": "영향력↑  신뢰↓", "effects": [{ "metric": "politicalCapital", "delta": 10 }, { "metric": "executiveTrust", "delta": -5 }], "hiddenEffects": [], "chainEvent": null },
+      { "index": 2, "text": "조용히 다음 주를 기다린다", "hint": "...", "effects": [{ "metric": "stress", "delta": 5 }], "hiddenEffects": [{ "metric": "kpiProgress", "delta": -10, "delay": 1, "description": "다음 주에도 같은 회의가 반복됐다" }], "chainEvent": null }
+    ],
+    "tags": ["meeting", "decision", "leadership"]
+  },
+  {
+    "id": "B-003",
+    "category": "meeting",
+    "categoryKr": "회의 문화",
+    "title": "금요일 오후 5시 긴급회의",
+    "week": null,
+    "npcId": "EXE-01",
+    "npcName": "이 전무",
+    "npcOrg": "사업본부 A",
+    "urgency": "critical",
+    "description": "금요일 오후 5시, 이 전무에게서 연락이 왔다.\n\n\"월요일 오전 전사 긴급회의. 자료 준비해와.\"\n\n내용은 없다. 주말이다.",
+    "choices": [
+      { "index": 0, "text": "주말 내내 모든 가능성 대비 자료 준비", "hint": "스트레스↑↑↑  KPI↑", "effects": [{ "metric": "stress", "delta": 30 }, { "metric": "kpiProgress", "delta": 10 }], "hiddenEffects": [], "chainEvent": null },
+      { "index": 1, "text": "임원 비서에게 아젠다 확인 요청", "hint": "스트레스↓  KPI↑", "effects": [{ "metric": "stress", "delta": 5 }, { "metric": "kpiProgress", "delta": 5 }], "hiddenEffects": [], "chainEvent": null },
+      { "index": 2, "text": "주말은 쉬고 월요일 일찍 출근", "hint": "스트레스↓↓  KPI↓", "effects": [{ "metric": "stress", "delta": -10 }, { "metric": "kpiProgress", "delta": -5 }], "hiddenEffects": [], "chainEvent": null }
+    ],
+    "tags": ["meeting", "weekend", "executive", "urgent"]
+  },
+  {
+    "id": "C-001",
+    "category": "politics",
+    "categoryKr": "조직 정치",
+    "title": "\"저 팀장 곧 나간다는데\"",
+    "week": null,
+    "npcId": "TM-04",
+    "npcName": "전 책임",
+    "npcOrg": "플레이어 팀",
+    "urgency": "low",
+    "description": "신뢰할 만한 동료가 귓속말로:\n\n\"A팀장 6개월 안에 나갈 것 같아. 지금 그 팀 사람들이랑 관계 미리 만들어두면 나중에 도움이 될 거야.\"",
+    "choices": [
+      { "index": 0, "text": "조용히 A팀 사람들과 관계 형성 시작", "hint": "영향력↑  KPI↓", "effects": [{ "metric": "politicalCapital", "delta": 15 }, { "metric": "kpiProgress", "delta": -10 }], "hiddenEffects": [], "chainEvent": null },
+      { "index": 1, "text": "그런 정치는 하지 않는다", "hint": "KPI↑  영향력↓", "effects": [{ "metric": "kpiProgress", "delta": 5 }, { "metric": "politicalCapital", "delta": -5 }], "hiddenEffects": [], "chainEvent": null },
+      { "index": 2, "text": "해당 팀장에게 직접 연락해 관계 강화", "hint": "영향력↑  (리스크 있음)", "effects": [{ "metric": "politicalCapital", "delta": 5 }], "hiddenEffects": [{ "metric": "executiveTrust", "delta": -10, "delay": 2, "description": "팀장이 이 사실을 눈치챘다..." }], "chainEvent": null }
+    ],
+    "tags": ["politics", "networking", "info"]
+  },
+  {
+    "id": "C-002",
+    "category": "politics",
+    "categoryKr": "조직 정치",
+    "title": "내 공을 뺏겼다",
+    "week": null,
+    "npcId": "TL-01",
+    "npcName": "김 팀장",
+    "npcOrg": "상품기획팀",
+    "urgency": "high",
+    "description": "우리 팀이 3개월 준비한 프로젝트 성과를 옆 팀장이 임원 보고에서 자기 팀 성과처럼 발표했다.\n\n임원은 모르는 것 같다.",
+    "choices": [
+      { "index": 0, "text": "임원에게 직접 사실 알림", "hint": "신뢰↑  영향력↓↓", "effects": [{ "metric": "executiveTrust", "delta": 10 }, { "metric": "politicalCapital", "delta": -20 }], "hiddenEffects": [], "chainEvent": null },
+      { "index": 1, "text": "해당 팀장에게 개인적으로 항의", "hint": "사기↑  영향력↓", "effects": [{ "metric": "teamMorale", "delta": 10 }, { "metric": "politicalCapital", "delta": -10 }], "hiddenEffects": [], "chainEvent": null },
+      { "index": 2, "text": "참는다, 다음에는 먼저 발표 기회를 잡는다", "hint": "사기↓  영향력↑", "effects": [{ "metric": "teamMorale", "delta": -15 }, { "metric": "politicalCapital", "delta": 5 }], "hiddenEffects": [], "chainEvent": null }
+    ],
+    "tags": ["politics", "credit", "fairness"]
+  },
+  {
+    "id": "C-003",
+    "category": "politics",
+    "categoryKr": "조직 정치",
+    "title": "파벌 선택의 시간",
+    "week": null,
+    "npcId": "EXE-01",
+    "npcName": "이 전무",
+    "npcOrg": "사업본부 A",
+    "urgency": "medium",
+    "description": "회사 내 두 임원 파벌이 있다.\n이 전무 라인과 박 상무 라인.\n\n두 쪽에서 각각 자기 라인에 붙으라는 시그널을 보내고 있다.",
+    "choices": [
+      { "index": 0, "text": "이 전무 라인 선택", "hint": "신뢰↑↑  (한쪽 영향력 상실)", "effects": [{ "metric": "executiveTrust", "delta": 20 }, { "metric": "politicalCapital", "delta": -15 }], "hiddenEffects": [], "chainEvent": null },
+      { "index": 1, "text": "박 상무 라인 선택", "hint": "영향력↑  신뢰~", "effects": [{ "metric": "politicalCapital", "delta": 20 }, { "metric": "executiveTrust", "delta": -10 }], "hiddenEffects": [], "chainEvent": null },
+      { "index": 2, "text": "중립 유지 시도", "hint": "양쪽 신뢰↓  영향력↑", "effects": [{ "metric": "executiveTrust", "delta": -5 }, { "metric": "politicalCapital", "delta": 10 }], "hiddenEffects": [], "chainEvent": null }
+    ],
+    "tags": ["politics", "faction", "executive"]
+  },
+  {
+    "id": "C-004",
+    "category": "politics",
+    "categoryKr": "조직 정치",
+    "title": "블라인드에 우리 팀 글이",
+    "week": null,
+    "npcId": "TM-01",
+    "npcName": "이 선임",
+    "npcOrg": "플레이어 팀",
+    "urgency": "high",
+    "description": "직장인 익명 커뮤니티에 우리 팀에 대한 글이 올라왔다.\n\n\"XX팀 팀장 갑질 심각함. 매일 야근 강요.\"\n\n팀원 중 누군가 쓴 것 같다.",
+    "choices": [
+      { "index": 0, "text": "팀 전체 미팅 열어 분위기 파악", "hint": "사기~  영향력↓", "effects": [{ "metric": "teamMorale", "delta": -5 }, { "metric": "politicalCapital", "delta": -10 }], "hiddenEffects": [], "chainEvent": null },
+      { "index": 1, "text": "조용히 무시, 팀 분위기 자연스럽게 개선", "hint": "사기↑  KPI↓", "effects": [{ "metric": "teamMorale", "delta": 10 }, { "metric": "kpiProgress", "delta": -5 }], "hiddenEffects": [], "chainEvent": null },
+      { "index": 2, "text": "글 작성자 찾아내 대화", "hint": "사기↓↓  (리스크 있음)", "effects": [{ "metric": "teamMorale", "delta": -20 }], "hiddenEffects": [{ "metric": "politicalCapital", "delta": -15, "delay": 1, "description": "팀원 한 명이 HR에 신고했다" }], "chainEvent": null }
+    ],
+    "tags": ["politics", "team", "reputation"]
+  },
+  {
+    "id": "D-001",
+    "category": "ai",
+    "categoryKr": "AI 전환",
+    "title": "\"AI 로드맵 짜봐\"",
+    "week": null,
+    "npcId": "EXE-02",
+    "npcName": "박 상무",
+    "npcOrg": "AX추진센터",
+    "urgency": "high",
+    "description": "박 상무 지시:\n\n\"전사 AX 전략 로드맵, 다음 주까지 만들어봐. CEO가 AI 얘기 하도 많이 하셔서.\"\n\n아무런 사전 자료도 방향도 없다.",
+    "choices": [
+      { "index": 0, "text": "밤새워 로드맵 초안 작성", "hint": "스트레스↑↑  KPI↑", "effects": [{ "metric": "stress", "delta": 25 }, { "metric": "kpiProgress", "delta": 10 }], "hiddenEffects": [], "chainEvent": null },
+      { "index": 1, "text": "먼저 다른 팀과 방향 논의", "hint": "영향력↑  (시간 소요)", "effects": [{ "metric": "politicalCapital", "delta": 10 }, { "metric": "kpiProgress", "delta": 5 }], "hiddenEffects": [], "chainEvent": null },
+      { "index": 2, "text": "외부 컨설팅 자료 참고해 빠르게 작성", "hint": "KPI↑  (리스크 있음)", "effects": [{ "metric": "kpiProgress", "delta": 15 }], "hiddenEffects": [{ "metric": "executiveTrust", "delta": -15, "delay": 2, "description": "\"이거 어디서 베꼈냐\"는 지적을 받았다" }], "chainEvent": null }
+    ],
+    "tags": ["ai", "strategy", "executive"]
+  },
+  {
+    "id": "D-002",
+    "category": "ai",
+    "categoryKr": "AI 전환",
+    "title": "현업이 AI를 안 쓴다",
+    "week": null,
+    "npcId": "EXE-02",
+    "npcName": "박 상무",
+    "npcOrg": "AX추진센터",
+    "urgency": "medium",
+    "description": "도입한 AI 협업 툴의 실제 사용률이 8%다.\n\n박 상무: \"왜 우리 팀이 안 씁니까?\"\n팀원들: \"그게 더 번거롭습니다.\"",
+    "choices": [
+      { "index": 0, "text": "팀 내 강제 사용 지시", "hint": "사기↓↓  KPI↑", "effects": [{ "metric": "teamMorale", "delta": -20 }, { "metric": "kpiProgress", "delta": 10 }], "hiddenEffects": [], "chainEvent": null },
+      { "index": 1, "text": "\"사용성 개선이 필요하다\"고 피드백", "hint": "영향력~  사기↑", "effects": [{ "metric": "politicalCapital", "delta": -5 }, { "metric": "teamMorale", "delta": 5 }], "hiddenEffects": [], "chainEvent": null },
+      { "index": 2, "text": "팀에 맞는 활용 사례 발굴해서 자연스럽게 도입", "hint": "KPI↑  스트레스↑", "effects": [{ "metric": "kpiProgress", "delta": 5 }, { "metric": "stress", "delta": 15 }], "hiddenEffects": [], "chainEvent": null }
+    ],
+    "tags": ["ai", "adoption", "team"]
+  },
+  {
+    "id": "D-003",
+    "category": "ai",
+    "categoryKr": "AI 전환",
+    "title": "직원들이 AI를 두려워한다",
+    "week": null,
+    "npcId": "TM-01",
+    "npcName": "이 선임",
+    "npcOrg": "플레이어 팀",
+    "urgency": "medium",
+    "description": "팀원 이 선임이 조심스럽게 묻는다.\n\n\"AI 때문에 제 자리가 없어지는 거 아닌가요?\"\n\n다른 팀원들도 같은 생각인 것 같다.",
+    "choices": [
+      { "index": 0, "text": "\"AI는 도구, 여러분 역할은 더 중요해진다\"고 설명", "hint": "사기↑  KPI↑", "effects": [{ "metric": "teamMorale", "delta": 15 }, { "metric": "kpiProgress", "delta": 5 }], "hiddenEffects": [], "chainEvent": null },
+      { "index": 1, "text": "\"걱정도 이해되지만 적응해야 한다\"", "hint": "사기↓  KPI↑", "effects": [{ "metric": "teamMorale", "delta": -5 }, { "metric": "kpiProgress", "delta": 5 }], "hiddenEffects": [], "chainEvent": null },
+      { "index": 2, "text": "HR에 AI 시대 역량 개발 프로그램 요청", "hint": "사기↑  영향력↑  KPI↓", "effects": [{ "metric": "teamMorale", "delta": 10 }, { "metric": "politicalCapital", "delta": 5 }, { "metric": "kpiProgress", "delta": -5 }], "hiddenEffects": [], "chainEvent": null }
+    ],
+    "tags": ["ai", "team", "morale", "change"]
+  },
+  {
+    "id": "D-004",
+    "category": "ai",
+    "categoryKr": "AI 전환",
+    "title": "AI가 만든 보고서",
+    "week": null,
+    "npcId": "TM-01",
+    "npcName": "이 선임",
+    "npcOrg": "플레이어 팀",
+    "urgency": "high",
+    "description": "팀원이 AI 툴로 보고서 초안을 만들어왔다.\n빠르긴 한데, 내용이 표면적이고 사실 오류가 2개 있다.\n\n마감은 2시간 후다.",
+    "choices": [
+      { "index": 0, "text": "직접 수정해서 제출", "hint": "KPI↑  스트레스↑↑", "effects": [{ "metric": "kpiProgress", "delta": 5 }, { "metric": "stress", "delta": 20 }], "hiddenEffects": [], "chainEvent": null },
+      { "index": 1, "text": "AI 초안을 그대로 제출", "hint": "스트레스↓  (리스크 있음)", "effects": [{ "metric": "stress", "delta": -10 }], "hiddenEffects": [{ "metric": "executiveTrust", "delta": -20, "delay": 1, "description": "오류가 보고 중에 발견됐다..." }], "chainEvent": null },
+      { "index": 2, "text": "팀원에게 직접 수정 지시", "hint": "사기↓  KPI↑", "effects": [{ "metric": "teamMorale", "delta": -10 }, { "metric": "kpiProgress", "delta": 5 }], "hiddenEffects": [], "chainEvent": null }
+    ],
+    "tags": ["ai", "reporting", "quality"]
+  },
+  {
+    "id": "E-001",
+    "category": "kpi",
+    "categoryKr": "KPI 압박",
+    "title": "\"KPI가 너무 높게 잡혔다\"",
+    "week": 1,
+    "npcId": "EXE-01",
+    "npcName": "이 전무",
+    "npcOrg": "사업본부 A",
+    "urgency": "high",
+    "description": "연초 KPI 세팅 시즌.\n\n이 전무가 제시한 목표치가 작년 실적의 150%다.\n팀원들: \"이건 불가능합니다.\"",
+    "choices": [
+      { "index": 0, "text": "그대로 수용", "hint": "신뢰↑  사기↓↓", "effects": [{ "metric": "executiveTrust", "delta": 10 }, { "metric": "teamMorale", "delta": -25 }], "hiddenEffects": [], "chainEvent": null },
+      { "index": 1, "text": "협의하여 120%로 조정", "hint": "신뢰↓  사기↑", "effects": [{ "metric": "executiveTrust", "delta": -10 }, { "metric": "teamMorale", "delta": 10 }], "hiddenEffects": [], "chainEvent": null },
+      { "index": 2, "text": "데이터로 현실적 수치 제안", "hint": "영향력↑  신뢰~", "effects": [{ "metric": "politicalCapital", "delta": 10 }, { "metric": "kpiProgress", "delta": 5 }, { "metric": "executiveTrust", "delta": -5 }], "hiddenEffects": [], "chainEvent": null }
+    ],
+    "tags": ["kpi", "negotiation", "target"]
+  },
+  {
+    "id": "E-002",
+    "category": "kpi",
+    "categoryKr": "KPI 압박",
+    "title": "마감 2주 전 목표 상향",
+    "week": null,
+    "npcId": "EXE-01",
+    "npcName": "이 전무",
+    "npcOrg": "사업본부 A",
+    "urgency": "critical",
+    "description": "분기 마감 2주 전.\n\n이 전무: \"올해 전사 목표가 올라갔어. 우리 팀도 10% 더 해야 해.\"\n\n팀원들의 표정이 굳어버렸다.",
+    "choices": [
+      { "index": 0, "text": "\"할 수 있습니다\"", "hint": "스트레스↑↑  사기↓  KPI↑", "effects": [{ "metric": "stress", "delta": 25 }, { "metric": "teamMorale", "delta": -15 }, { "metric": "kpiProgress", "delta": 10 }], "hiddenEffects": [], "chainEvent": null },
+      { "index": 1, "text": "\"현실적으로 어렵습니다\"라고 보고", "hint": "신뢰↓  스트레스↓", "effects": [{ "metric": "executiveTrust", "delta": -15 }, { "metric": "stress", "delta": -10 }], "hiddenEffects": [], "chainEvent": null },
+      { "index": 2, "text": "가능한 부분과 불가능한 부분 분리 보고", "hint": "영향력↑  KPI↑", "effects": [{ "metric": "politicalCapital", "delta": 10 }, { "metric": "kpiProgress", "delta": 5 }], "hiddenEffects": [], "chainEvent": null }
+    ],
+    "tags": ["kpi", "pressure", "negotiation"]
+  },
+  {
+    "id": "F-001",
+    "category": "conflict",
+    "categoryKr": "자원 충돌",
+    "title": "팀원이 갑자기 병가",
+    "week": null,
+    "npcId": "TM-01",
+    "npcName": "이 선임",
+    "npcOrg": "플레이어 팀",
+    "urgency": "high",
+    "description": "핵심 팀원 이 선임이 갑자기 2주 병가를 냈다.\n\n그 팀원이 담당하던 프로젝트 마감이 3주 후다.\n아무도 그 업무를 완전히 파악하지 못한다.",
+    "choices": [
+      { "index": 0, "text": "나머지 팀원들이 나눠서 처리", "hint": "사기↓↓  KPI↑", "effects": [{ "metric": "teamMorale", "delta": -20 }, { "metric": "kpiProgress", "delta": 5 }], "hiddenEffects": [], "chainEvent": null },
+      { "index": 1, "text": "타 팀에 임시 인력 지원 요청", "hint": "영향력↓  KPI↑", "effects": [{ "metric": "politicalCapital", "delta": -10 }, { "metric": "kpiProgress", "delta": 10 }], "hiddenEffects": [], "chainEvent": null },
+      { "index": 2, "text": "마감 연장 협의", "hint": "KPI↓  사기↑", "effects": [{ "metric": "kpiProgress", "delta": -10 }, { "metric": "teamMorale", "delta": 5 }], "hiddenEffects": [], "chainEvent": null }
+    ],
+    "tags": ["resource", "team", "deadline"]
+  },
+  {
+    "id": "F-002",
+    "category": "conflict",
+    "categoryKr": "자원 충돌",
+    "title": "예산이 반으로 줄었다",
+    "week": null,
+    "npcId": "EXE-01",
+    "npcName": "이 전무",
+    "npcOrg": "사업본부 A",
+    "urgency": "critical",
+    "description": "분기 중반에 공문이 왔다.\n\n\"전사 긴축 기조 — 팀 예산 40% 삭감.\"\n\n이미 진행 중인 프로젝트가 3개다.",
+    "choices": [
+      { "index": 0, "text": "핵심 프로젝트만 유지, 나머지 중단", "hint": "KPI↓  예산↑", "effects": [{ "metric": "kpiProgress", "delta": -15 }, { "metric": "budget", "delta": 15 }], "hiddenEffects": [], "chainEvent": null },
+      { "index": 1, "text": "모든 프로젝트 소규모로 유지", "hint": "사기↓  예산↑", "effects": [{ "metric": "teamMorale", "delta": -10 }, { "metric": "budget", "delta": 5 }, { "metric": "kpiProgress", "delta": -5 }], "hiddenEffects": [], "chainEvent": null },
+      { "index": 2, "text": "임원에게 예산 복구 건의", "hint": "영향력↓  신뢰↓", "effects": [{ "metric": "politicalCapital", "delta": -10 }, { "metric": "executiveTrust", "delta": -5 }], "hiddenEffects": [], "chainEvent": null }
+    ],
+    "tags": ["budget", "resource", "priority"]
+  },
+  {
+    "id": "G-001",
+    "category": "org_conflict",
+    "categoryKr": "조직 간 갈등",
+    "title": "영업이 불가능한 걸 약속했다",
+    "week": null,
+    "npcId": "TL-07",
+    "npcName": "류 팀장",
+    "npcOrg": "영업팀",
+    "urgency": "critical",
+    "description": "류 팀장(영업)이 VIP 고객에게 \"2개월 내 납품\"을 약속해버렸다.\n\nSCM팀: \"해당 부품 납기 8주입니다. 4주 납품 불가능합니다.\"\n생산팀: \"특수 사양이면 라인 셋업에 2주 더 필요합니다.\"",
+    "choices": [
+      { "index": 0, "text": "어떻게든 2개월 맞추기", "hint": "사기↓↓  KPI↑↑", "effects": [{ "metric": "teamMorale", "delta": -20 }, { "metric": "kpiProgress", "delta": 15 }], "hiddenEffects": [], "chainEvent": null },
+      { "index": 1, "text": "고객에게 현실적 일정 재협의 권고", "hint": "영업 영향력↓  KPI↓", "effects": [{ "metric": "politicalCapital", "delta": -15 }, { "metric": "kpiProgress", "delta": -5 }], "hiddenEffects": [], "chainEvent": null },
+      { "index": 2, "text": "부분 납품 등 타협안 제시", "hint": "영향력~  KPI↑", "effects": [{ "metric": "kpiProgress", "delta": 5 }, { "metric": "politicalCapital", "delta": 0 }], "hiddenEffects": [], "chainEvent": null }
+    ],
+    "tags": ["sales", "scm", "production", "customer"]
+  },
+  {
+    "id": "G-002",
+    "category": "org_conflict",
+    "categoryKr": "조직 간 갈등",
+    "title": "출시 일정 vs 품질",
+    "week": null,
+    "npcId": "TL-01",
+    "npcName": "김 팀장",
+    "npcOrg": "상품기획팀",
+    "urgency": "critical",
+    "description": "김 팀장(상품기획): \"경쟁사가 먼저 출시하면 끝입니다. 일정 절대 양보 불가.\"\n\n신 팀장(품질): \"이 상태로 출시하면 리콜 납니다. 3주 연기가 필요합니다.\"\n\n둘 다 틀리지 않았다.",
+    "choices": [
+      { "index": 0, "text": "출시 일정 강행 (상품기획 편)", "hint": "KPI↑  (품질 리스크)", "effects": [{ "metric": "kpiProgress", "delta": 15 }, { "metric": "politicalCapital", "delta": -10 }], "hiddenEffects": [{ "metric": "executiveTrust", "delta": -15, "delay": 3, "description": "품질 이슈로 고객 컴플레인이 쏟아졌다..." }], "chainEvent": null },
+      { "index": 1, "text": "3주 연기 (품질 편)", "hint": "KPI↓  리스크↓", "effects": [{ "metric": "kpiProgress", "delta": -10 }, { "metric": "politicalCapital", "delta": -5 }], "hiddenEffects": [], "chainEvent": null },
+      { "index": 2, "text": "임원에게 판단 요청", "hint": "신뢰↑  영향력↓", "effects": [{ "metric": "executiveTrust", "delta": 5 }, { "metric": "politicalCapital", "delta": -5 }], "hiddenEffects": [], "chainEvent": null }
+    ],
+    "tags": ["quality", "schedule", "product", "conflict"]
+  },
+  {
+    "id": "H-001",
+    "category": "reorg",
+    "categoryKr": "조직개편",
+    "title": "조직개편 루머",
+    "week": 10,
+    "npcId": "TL-09",
+    "npcName": "홍 팀장",
+    "npcOrg": "HR팀",
+    "urgency": "medium",
+    "description": "3주째 조직개편 루머가 돌고 있다.\n\n팀원들이 불안해한다.\n아무도 공식 입장을 내지 않는다.\n\n홍 팀장(HR)이 조용히 전화를 해왔다.",
+    "choices": [
+      { "index": 0, "text": "팀원들에게 \"걱정 말라\"고", "hint": "사기↑  (리스크 있음)", "effects": [{ "metric": "teamMorale", "delta": 5 }], "hiddenEffects": [{ "metric": "teamMorale", "delta": -15, "delay": 2, "description": "루머가 사실로 확인되며 신뢰가 무너졌다" }], "chainEvent": null },
+      { "index": 1, "text": "HR에 공식 확인 요청", "hint": "영향력↓  사기↑", "effects": [{ "metric": "politicalCapital", "delta": -5 }, { "metric": "teamMorale", "delta": 10 }], "hiddenEffects": [], "chainEvent": null },
+      { "index": 2, "text": "\"불확실성 속에서도 우리 일에 집중\"", "hint": "사기~  KPI↑", "effects": [{ "metric": "teamMorale", "delta": 3 }, { "metric": "kpiProgress", "delta": 5 }], "hiddenEffects": [], "chainEvent": null }
+    ],
+    "tags": ["reorg", "team", "uncertainty"]
+  },
+  {
+    "id": "H-002",
+    "category": "reorg",
+    "categoryKr": "조직개편",
+    "title": "팀장이 바뀌었다",
+    "week": null,
+    "npcId": "EXE-01",
+    "npcName": "이 전무",
+    "npcOrg": "사업본부 A",
+    "urgency": "high",
+    "description": "조직개편으로 새 팀장이 왔다.\n전임과 완전히 다른 스타일이다.\n\n팀원들이 혼란스러워한다.\n새 팀장은 모든 업무 방식을 바꾸겠다고 한다.",
+    "choices": [
+      { "index": 0, "text": "새 팀장 스타일에 빠르게 적응", "hint": "신뢰↑  사기↓", "effects": [{ "metric": "executiveTrust", "delta": 10 }, { "metric": "teamMorale", "delta": -10 }], "hiddenEffects": [], "chainEvent": null },
+      { "index": 1, "text": "기존 팀 문화 설명하며 브리지 역할", "hint": "사기↑  영향력↑", "effects": [{ "metric": "teamMorale", "delta": 10 }, { "metric": "politicalCapital", "delta": 5 }], "hiddenEffects": [], "chainEvent": null },
+      { "index": 2, "text": "팀원들에게 변화 적응 지원", "hint": "사기↑↑  KPI↓", "effects": [{ "metric": "teamMorale", "delta": 15 }, { "metric": "kpiProgress", "delta": -10 }], "hiddenEffects": [], "chainEvent": null }
+    ],
+    "tags": ["reorg", "leadership", "change"]
+  },
+  {
+    "id": "I-001",
+    "category": "human",
+    "categoryKr": "인간 관계",
+    "title": "팀원이 번아웃이다",
+    "week": null,
+    "npcId": "TM-01",
+    "npcName": "이 선임",
+    "npcOrg": "플레이어 팀",
+    "urgency": "medium",
+    "description": "이 선임이 최근 급격히 말이 없어지고 실수가 늘었다.\n표정이 어둡다.\n\n출퇴근 시간은 정상인데 일의 퀄리티가 눈에 띄게 떨어지고 있다.",
+    "choices": [
+      { "index": 0, "text": "개인 면담으로 상태 확인", "hint": "사기↑  KPI↓", "effects": [{ "metric": "teamMorale", "delta": 15 }, { "metric": "kpiProgress", "delta": -5 }], "hiddenEffects": [], "chainEvent": null },
+      { "index": 1, "text": "업무량 줄여주기", "hint": "사기↑  KPI↓↓", "effects": [{ "metric": "teamMorale", "delta": 10 }, { "metric": "kpiProgress", "delta": -10 }], "hiddenEffects": [], "chainEvent": null },
+      { "index": 2, "text": "모른 척 업무 계속", "hint": "KPI~  (나중에 문제)", "effects": [{ "metric": "kpiProgress", "delta": 3 }], "hiddenEffects": [{ "metric": "teamMorale", "delta": -25, "delay": 2, "description": "이 선임이 퇴직 의사를 밝혔다" }], "chainEvent": null }
+    ],
+    "tags": ["burnout", "team", "human", "care"]
+  },
+  {
+    "id": "I-002",
+    "category": "human",
+    "categoryKr": "인간 관계",
+    "title": "핵심 팀원이 이직 오퍼를",
+    "week": null,
+    "npcId": "TM-01",
+    "npcName": "이 선임",
+    "npcOrg": "플레이어 팀",
+    "urgency": "high",
+    "description": "팀에서 가장 잘하는 이 선임이 조용히 알려줬다.\n\n\"외부 오퍼를 받았습니다. 연봉이 꽤 올라요.\"\n\n이 선임이 나가면 팀 역량에 큰 공백이 생긴다.",
+    "choices": [
+      { "index": 0, "text": "연봉 인상 협의 시도", "hint": "사기↑  예산↓", "effects": [{ "metric": "teamMorale", "delta": 10 }, { "metric": "budget", "delta": -15 }], "hiddenEffects": [], "chainEvent": null },
+      { "index": 1, "text": "성장 기회, 커리어 비전 설명", "hint": "사기↑  영향력↑", "effects": [{ "metric": "teamMorale", "delta": 5 }, { "metric": "politicalCapital", "delta": 5 }], "hiddenEffects": [], "chainEvent": null },
+      { "index": 2, "text": "보내준다, 좋은 관계 유지", "hint": "사기↑↑↑  KPI↓↓", "effects": [{ "metric": "teamMorale", "delta": 20 }, { "metric": "kpiProgress", "delta": -15 }], "hiddenEffects": [], "chainEvent": null }
+    ],
+    "tags": ["retention", "team", "career"]
+  },
+  {
+    "id": "FIXED-4",
+    "category": "fixed",
+    "categoryKr": "월간 보고",
+    "title": "📊 월간 KPI 보고",
+    "week": 4,
+    "npcId": "EXE-01",
+    "npcName": "이 전무",
+    "npcOrg": "사업본부 A",
+    "urgency": "critical",
+    "description": "월간 KPI 보고 시즌이다.\n\n이 전무: \"이번 달 성과를 정리해서 가져와. CEO도 보실 거야.\"\n\n지금까지의 성과를 어떻게 프레임 할지 결정해야 한다.",
+    "choices": [
+      { "index": 0, "text": "있는 그대로 솔직하게 보고", "hint": "신뢰↑  영향력↑", "effects": [{ "metric": "executiveTrust", "delta": 10 }, { "metric": "politicalCapital", "delta": 5 }], "hiddenEffects": [], "chainEvent": null },
+      { "index": 1, "text": "긍정적 측면 강조, 부정적 측면 최소화", "hint": "신뢰↑↑  (리스크 있음)", "effects": [{ "metric": "executiveTrust", "delta": 15 }, { "metric": "kpiProgress", "delta": 5 }], "hiddenEffects": [{ "metric": "politicalCapital", "delta": -10, "delay": 2, "description": "실제 수치와 다르다는 지적이 들어왔다" }], "chainEvent": null },
+      { "index": 2, "text": "개선 과제 중심으로 앞으로를 강조", "hint": "KPI↑  영향력↑", "effects": [{ "metric": "kpiProgress", "delta": 10 }, { "metric": "politicalCapital", "delta": 10 }], "hiddenEffects": [], "chainEvent": null }
+    ],
+    "tags": ["fixed", "monthly", "kpi", "report"]
+  },
+  {
+    "id": "FIXED-8",
+    "category": "fixed",
+    "categoryKr": "반기 점검",
+    "title": "📈 반기 성과 점검",
+    "week": 8,
+    "npcId": "EXE-01",
+    "npcName": "이 전무",
+    "npcOrg": "사업본부 A",
+    "urgency": "critical",
+    "description": "반기가 지났다.\n\n이 전무: \"상반기 리뷰를 해야겠어. 팀 전체 성과와 하반기 계획 가져와.\"\n\n지표를 보면 어떤 전략으로 하반기를 준비할지 선택해야 한다.",
+    "choices": [
+      { "index": 0, "text": "KPI 달성에 올인 — 팀을 더 몰아붙인다", "hint": "KPI↑↑  사기↓↓  스트레스↑", "effects": [{ "metric": "kpiProgress", "delta": 20 }, { "metric": "teamMorale", "delta": -20 }, { "metric": "stress", "delta": 10 }], "hiddenEffects": [], "chainEvent": null },
+      { "index": 1, "text": "팀 회복 우선 — 하반기를 위한 내공 쌓기", "hint": "사기↑↑  KPI↓  예산~", "effects": [{ "metric": "teamMorale", "delta": 20 }, { "metric": "kpiProgress", "delta": -10 }], "hiddenEffects": [], "chainEvent": null },
+      { "index": 2, "text": "균형 유지 — 현재 페이스 유지", "hint": "모든 지표 소폭 개선", "effects": [{ "metric": "kpiProgress", "delta": 8 }, { "metric": "teamMorale", "delta": 5 }, { "metric": "executiveTrust", "delta": 5 }], "hiddenEffects": [], "chainEvent": null }
+    ],
+    "tags": ["fixed", "halfyear", "strategy"]
+  },
+  {
+    "id": "STRESS-TRIGGER",
+    "category": "human",
+    "categoryKr": "번아웃 경고",
+    "title": "🔴 번아웃 경고",
+    "week": null,
+    "npcId": "TM-04",
+    "npcName": "전 책임",
+    "npcOrg": "플레이어 팀",
+    "urgency": "critical",
+    "description": "전 책임이 조심스럽게 말을 꺼냈다.\n\n\"요즘 많이 힘들어 보이세요. 솔직히 저도 한계가 느껴져요.\"\n\n팀 전체가 지쳐있다. 뭔가 바꿔야 한다.",
+    "triggerCondition": { "metric": "stress", "operator": "gte", "value": 75 },
+    "choices": [
+      { "index": 0, "text": "그냥 버틴다. 이게 회사 생활이다.", "hint": "스트레스↑  KPI~", "effects": [{ "metric": "stress", "delta": 10 }, { "metric": "kpiProgress", "delta": 5 }], "hiddenEffects": [], "chainEvent": null },
+      { "index": 1, "text": "팀 전체 하루 쉬는 날 준다", "hint": "사기↑↑  스트레스↓  KPI↓", "effects": [{ "metric": "teamMorale", "delta": 20 }, { "metric": "stress", "delta": -20 }, { "metric": "kpiProgress", "delta": -10 }], "hiddenEffects": [], "chainEvent": null },
+      { "index": 2, "text": "업무 재분배 + 프로세스 개선", "hint": "스트레스↓  사기↑  시간 필요", "effects": [{ "metric": "stress", "delta": -10 }, { "metric": "teamMorale", "delta": 10 }, { "metric": "kpiProgress", "delta": -5 }], "hiddenEffects": [], "chainEvent": null }
+    ],
+    "tags": ["burnout", "stress", "trigger"]
+  }
+]
