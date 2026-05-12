@@ -17,7 +17,7 @@ export default function GamePage() {
   const router = useRouter()
   const {
     week, phase, metrics,
-    completedEventIds, pendingChainEvents,
+    completedOneTimeIds, recentEventIds, pendingChainEvents,
     processChoice, advanceWeek,
     applyHiddenEffects, setEnding, lastFeedback, resetFeedback,
   } = useGameStore()
@@ -35,16 +35,15 @@ export default function GamePage() {
 
   // 주차 시작 시 이벤트 로드
   useEffect(() => {
-    if (uiPhase === 'events') {
-      const events = selectEvents(week, metrics, completedEventIds, pendingChainEvents)
-      if (events.length === 0) {
-        // 이벤트 없으면 바로 요약
-        goToSummary()
-        return
-      }
-      setCurrentEvents(events)
-      setCurrentEventIndex(0)
+    if (uiPhase !== 'events') return
+    const events = selectEvents(week, metrics, completedOneTimeIds, recentEventIds, pendingChainEvents)
+    if (events.length === 0) {
+      // 이벤트 없으면 바로 요약 (freeze 방지)
+      goToSummary()
+      return
     }
+    setCurrentEvents(events)
+    setCurrentEventIndex(0)
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [week, uiPhase])
 

@@ -16,7 +16,10 @@ interface GameStore {
   week: number
   phase: GamePhase
   metrics: Metrics
-  completedEventIds: string[]
+  // 고정/1회성 이벤트만 영구 차단 (fixed, chain, trigger)
+  completedOneTimeIds: string[]
+  // 최근 보여준 랜덤 이벤트 (최대 RECENT_MAX개) — 이것만 단기 차단
+  recentEventIds: string[]
   pendingChainEvents: ChainEvent[]
   pendingHiddenEffects: PendingHiddenEffect[]
   choiceHistory: ChoiceRecord[]
@@ -43,13 +46,21 @@ const INITIAL_METRICS: Metrics = {
 
 function clamp(v: number) { return Math.max(0, Math.min(100, v)) }
 
+// 1회성 이벤트 ID 패턴 (week 지정 or FIXED/STRESS/chain)
+function isOneTime(eventId: string): boolean {
+  return eventId.startsWith('FIXED') || eventId.startsWith('STRESS') || eventId.startsWith('E-001')
+}
+
+const RECENT_MAX = 7 // 최근 7개 이벤트는 다시 안 나옴 (7개 이후 재등장 가능)
+
 export const useGameStore = create<GameStore>()(
   persist(
     (set, get) => ({
       week: 1,
       phase: 'menu',
       metrics: { ...INITIAL_METRICS },
-      completedEventIds: [],
+      completedOneTimeIds: [],
+      recentEventIds: [],
       pendingChainEvents: [],
       pendingHiddenEffects: [],
       choiceHistory: [],
@@ -60,7 +71,8 @@ export const useGameStore = create<GameStore>()(
         week: 1,
         phase: 'playing',
         metrics: { ...INITIAL_METRICS },
-        completedEventIds: [],
+        completedOneTimeIds: [],
+        recentEventIds: [],
         pendingChainEvents: [],
         pendingHiddenEffects: [],
         choiceHistory: [],
@@ -100,9 +112,19 @@ export const useGameStore = create<GameStore>()(
           })
         }
 
+        // 1회성 이벤트는 영구 차단, 랜덤 이벤트는 recentEventIds에 추가
+        const newOneTime = isOneTime(event.id)
+          ? [...state.completedOneTimeIds, event.id]
+          : state.completedOneTimeIds
+
+        const newRecent = isOneTime(event.id)
+          ? state.recentEventIds
+          : [...state.recentEventIds, event.id].slice(-RECENT_MAX)
+
         set({
           metrics: newMetrics,
-          completedEventIds: [...state.completedEventIds, event.id],
+          completedOneTimeIds: newOneTime,
+          recentEventIds: newRecent,
           pendingChainEvents: newChains,
           pendingHiddenEffects: newHidden,
           choiceHistory: [...state.choiceHistory, { week: state.week, eventId: event.id, choiceIndex }],
